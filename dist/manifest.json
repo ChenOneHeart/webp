@@ -1,5 +1,5 @@
 {
-  "print.js": "autoprint.bundle.js",
-  "a-b-test.js": "autoa-b-test.bundle.js",
+  "main.js": "automain.cb4afbde8a2285c016a1.bundle.js",
+  "print.js": "autoprint.cb4afbde8a2285c016a1.bundle.js",
   "index.html": "autoindex.html"
 }
