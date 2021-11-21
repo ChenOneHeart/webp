@@ -7,19 +7,7 @@ import printMe from "./print.js";
 // // delete require.cache[require.resolve('./test1.js')];
 // console.log(require('./test1.js') === d1)
 
-// console.log(require.cache[module.id] === module);
-// console.log(require('./main.js') === module.exports);
-// delete require.cache[module.id];
-// console.log(require.cache[module.id] === undefined);
-// // require('./main.js') !== module.exports; // 理论上是不相等的；实际运行中，则会导致堆栈溢出
-// console.log(require.cache[module.id] !== module);
-// require.ensure
-
-
-
-
-
-console.dir(require.resolve('./main.js')) // moduleIds
+// console.dir(require.resolve("./main.js")); // moduleIds
 function component() {
   const element = document.createElement("div");
   const btn = document.createElement("button");

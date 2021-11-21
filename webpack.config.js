@@ -2,11 +2,12 @@ const webpack = require("webpack");
 const path = require("path");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 
 module.exports = {
   mode: "development",
   entry: {
-    main: path.resolve(__dirname, "./src/main.js"),
+    // main: path.resolve(__dirname, "./src/main.js"),
     print: path.resolve(__dirname, "./src/print.js"),
   },
   output: {
@@ -16,13 +17,17 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      // filename: "index.html",
-      // template: path.resolve(__dirname, "./public/index.html"),
       title: "管理输出",
     }),
-    // new webpack.ids.DeterministicModuleIdsPlugin({
-    //   maxLength: 5,
-    // }),
+    new WebpackManifestPlugin({
+      fileName: "manifest.json",
+      filter:(file)=>{
+        if(!(file instanceof Object)) {
+          return false
+        }
+        return true
+      }
+    }),
   ],
   module: {
     rules: [
@@ -37,11 +42,11 @@ module.exports = {
       {
         test: /\.(jpg|jpeg|png|gif|webp|svg)$/i,
         type: "asset/resource",
-      },
+      }, // 加载图片
       {
         test: /\.(woff|woff2|eot|tff|otf)$/i,
         type: "asset/resource",
-      },
+      }, // 加载字体文件
     ],
   },
   resolve: {
@@ -55,8 +60,6 @@ module.exports = {
   },
   optimization: {
     chunkIds: "total-size",
-    moduleIds: 'named' //模块id，可被require.reqsolve()获取
-    // moduleIds: false
-    // moduleIds: "deterministic",
+    moduleIds: "named", //模块标识符，可被require.reqsolve()获取
   },
 };
