@@ -1,0 +1,30 @@
+{
+  "name": "my-webpack-study-test-1234",
+  "version": "1.0.0",
+  "description": "webpack study",
+  "main": "main.js",
+  "scripts": {
+    "dev": "webpack --mode=development",
+    "dev-pro": "webpack --mode=production",
+    "build": "webpack --mode=production",
+    "build-pro": ""
+  },
+  "keywords": [],
+  "author": "nightdrizzle",
+  "license": "ISC",
+  "dependencies": {},
+  "repository": {
+    "private": true
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "css-loader": "^6.5.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.2.6",
+    "webpack": "^5.64.1",
+    "webpack-cli": "^4.9.1"
+  },
+  "private": true
+}

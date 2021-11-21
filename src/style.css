@@ -1,0 +1,16 @@
+body {
+  font-size: 50px;
+  font-family: 'Times New Roman';
+}
+.hello {
+  color: red;
+  /* background: url("./icon.png"); */
+  font-family: "myFont";
+}
+
+@font-face {
+  font-family: "myFont";
+  src: url("./my-font.eot") format("eot");
+  font-weight: 400;
+  font-style: normal;
+}
