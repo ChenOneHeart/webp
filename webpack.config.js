@@ -14,6 +14,7 @@ module.exports = {
     path: path.resolve(__dirname, "./dist"),
     filename: "[name].[hash].bundle.js",
     clean: true,
+    publicPath: "/"
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -58,5 +59,8 @@ module.exports = {
     // chunkIds: "total-size",
     moduleIds: "named", //模块标识符，可被require.reqsolve()获取
   },
-  // devtool: 'inline-source-map'
+  devtool: "inline-source-map",
+  devServer: {
+    static: "./dist",
+  },
 };
