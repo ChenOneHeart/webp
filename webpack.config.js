@@ -7,29 +7,28 @@ const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 module.exports = {
   mode: "development",
   entry: {
-    main: path.resolve(__dirname, "./src/main.js"),
-    print: path.resolve(__dirname, "./src/print.js"),
+    index: path.resolve(__dirname, "./src/index.js"),
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
-    filename: "[name].[hash].bundle.js",
+    filename: "[name].bundle.js",
     clean: true,
-    publicPath: "/"
+    // publicPath: "./",
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "Devepoment",
-    }),
-    new WebpackManifestPlugin({
-      fileName: "manifest.json",
-      filter: (file) => {
-        if (!(file instanceof Object)) {
-          return false;
-        }
-        return true;
-      },
-    }),
-  ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  optimization: {
+    moduleIds: "deterministic", // 模块标识符，可被require.reqsolve()获取
+    chunkIds: "named",
+    runtimeChunk: "single"
+  },
+  // devtool: "inline-source-map",
+  devServer: {
+    static: "./dist",
+  },
   module: {
     rules: [
       {
@@ -50,17 +49,12 @@ module.exports = {
       }, // 加载字体文件
     ],
   },
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
-  optimization: {
-    // chunkIds: "total-size",
-    moduleIds: "named", //模块标识符，可被require.reqsolve()获取
-  },
-  devtool: "inline-source-map",
-  devServer: {
-    static: "./dist",
-  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Devepoment",
+    }),
+    // new WebpackManifestPlugin({
+    //   fileName: "manifest.json",
+    // }), // 生成manifest文件
+  ],
 };
