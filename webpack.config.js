@@ -11,7 +11,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
-    filename: "[name].bundle.js",
+    filename: "[name].[contenthash].js",
     clean: true,
     // publicPath: "./",
   },
@@ -23,7 +23,16 @@ module.exports = {
   optimization: {
     moduleIds: "deterministic", // 模块标识符，可被require.reqsolve()获取
     chunkIds: "named",
-    runtimeChunk: "single"
+    runtimeChunk: "single",
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all",
+        },
+      },
+    },
   },
   // devtool: "inline-source-map",
   devServer: {
