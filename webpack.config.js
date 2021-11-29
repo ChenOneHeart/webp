@@ -1,40 +1,25 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
-
-module.exports = (env) => {
-  let config = {
-    mode: "development",
-    entry: "./src/index.js",
-    output: {
-      filename: "[name].bundle.js",
-      path: path.resolve(__dirname, "dist"),
-      clean: true,
-    },
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          use: "babel-loader",
-          include: path.resolve(__dirname, "./src"),
-        },
-        {
-          test: /\.css$/,
-          use: ["style-loader", "css-loader"],
-        },
-      ],
-    },
-    plugins: [
-      new HtmlWebpackPlugin({
-        title: "Hot Module Replacement",
-      }),
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+module.exports = {
+  entry: "./src/index.js",
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist"),
+  },
+  mode: "development",
+  optimization: {
+    usedExports: true,
+  },
+  module: {
+    rule: [
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
     ],
-    devServer: {
-      static: "./dist",
-      hot: true,
-    },
-  };
-
-  return config;
+  },
+  plugins: [new HtmlWebpackPlugin()],
 };
 
 // const webpack = require("webpack");
