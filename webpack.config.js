@@ -12,14 +12,19 @@ module.exports = {
     usedExports: true,
   },
   module: {
-    rule: [
+    rules: [
       {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+    }),
+  ],
 };
 
 // const webpack = require("webpack");

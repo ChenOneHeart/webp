@@ -13,6 +13,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "webpack test",
+      template:'./src/index.html'
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",

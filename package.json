@@ -4,9 +4,9 @@
   "description": "webpack study",
   "main": "main.js",
   "scripts": {
-    "dev": "webpack",
+    "dev": "webpack --config webpack.config.js",
     "start": "webpack serve --open --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
+    "build": "webpack --config webpack.prod.js --json=compilation-stats.json",
     "server": "node server.js"
   },
   "keywords": [],
@@ -25,6 +25,9 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.4.5",
+    "node-sass": "^6.0.1",
+    "sass-loader": "^12.3.0",
+    "scss": "^0.2.4",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.2.6",
     "webpack": "^5.64.1",

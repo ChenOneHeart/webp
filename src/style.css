@@ -1,17 +1,17 @@
+
+@font-face {
+  font-family: "myFont1";
+  src: url("./test/my-font.eot") format("eot");
+  font-weight: 700;
+  font-style: italic;
+}
+
 body {
   font-size: 50px;
-  font-family: 'Times New Roman';
   color: blue;
 }
 .hello {
-  color: blue;
-  /* background: url("./icon.png"); */
-  font-family: "myFont";
+  color: orangered;
+  font-family: "myFont1";
 }
 
-@font-face {
-  font-family: "myFont";
-  src: url("./test/my-font.eot") format("eot");
-  font-weight: 400;
-  font-style: normal;
-}
